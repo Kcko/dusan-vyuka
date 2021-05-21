@@ -13,6 +13,11 @@ include 'app/config/database-connection.php';
 if (isset($_GET['page']))
 {
     $page = $_GET['page'];
+
+    // sanitizace 
+    $page = str_replace('.', '', $page);
+    $page = str_replace('/', '', $page);
+
     // pokud existuje soubor tak ho vlozime
     if (file_exists('views/' . $page . '.php')) {
         include 'views/' . $page . '.php';
